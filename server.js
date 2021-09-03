@@ -130,7 +130,7 @@ app.get('/api/coinex/:from/:to', async (req, res, next) => {
         to: coin2.name,
         price_1: coin1.market_data.current_price.usd,  // uses USD
         price_2: coin2.market_data.current_price.usd,
-        price: Number((coin1.market_data.current_price.usd / coin2.market_data.current_price.usd)),  // .toFixed(2)
+        price: Number((coin1.market_data.current_price.usd / coin2.market_data.current_price.usd)).toFixed(8),
         lastupdate_1: coin1.last_updated + 3,  // fix this
         lastupdate_2: coin2.last_updated + 3 
       });
