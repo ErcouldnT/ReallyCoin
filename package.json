@@ -4,7 +4,10 @@
   "description": "fast coin exchange",
   "main": "gecko.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cd client && npm run build && cd .. && nodemon server",
+    "start": "node server",
+    "backend": "nodemon server",
+    "client": "cd client && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -22,9 +25,11 @@
   },
   "homepage": "https://github.com/ErcouldnT/Exchange-App#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.10",
-    "express": "^4.17.1"
+    "coingecko-api": "^1.0.10",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
