@@ -1,5 +1,5 @@
 # ReallyCoin
-Everything about coins.
+*Everything about coins.*
 
 ## Used technologies:
 ### Backend
@@ -10,8 +10,8 @@ Mongoose \
 CoinGecko-api
 
 ### Frontend
-SvelteKit \
-Tailwind CSS \
+> SvelteKit \
+Tailwind CSS
 
 ### Development
 > Nodemon \
@@ -23,6 +23,6 @@ Cloudflare \
 MongoDB Atlas
 
 ## Todo
-  * [ ] Client-side.
+  * [ ] Client-side
 
-&copy; 2021 Ercode
+&copy; *2021 Ercode*
