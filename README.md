@@ -23,6 +23,6 @@ Cloudflare \
 MongoDB Atlas
 
 ## Todo
-  * [ ] Client-side
+  * [x] Client-side setup
 
 &copy; *2021 Ercode*
