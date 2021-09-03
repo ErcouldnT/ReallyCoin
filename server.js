@@ -25,7 +25,7 @@ app.enable('trust proxy');
 app.get('/api/coin/:symbol', async (req, res, next) => {
   try {
     const { symbol } = req.params;
-    const coin = await Coin.findOne({ symbol: symbol });
+    const coin = await Coin.findOne({ symbol: symbol.toLowerCase() });
     if (coin) {
       res.json({
         rank: coin.market_data.market_cap_rank,
@@ -49,13 +49,13 @@ app.get('/api/coin/:symbol', async (req, res, next) => {
 app.get('/api/coin/:symbol/:money', async (req, res, next) => {
   try {
     const { symbol, money } = req.params;
-    const coin = await Coin.findOne({ symbol: symbol });
-    if (coin && coin.market_data.current_price[money]) {
+    const coin = await Coin.findOne({ symbol: symbol.toLowerCase() });
+    if (coin && coin.market_data.current_price[money.toLowerCase()]) {
       res.json({
         rank: coin.market_data.market_cap_rank,
         symbol: coin.symbol,
         name: coin.name,
-        price: coin.market_data.current_price[money],
+        price: coin.market_data.current_price[money.toLowerCase()],
         image: coin.image.large,
         lastupdate: coin.last_updated + 3  // fix this
       });
@@ -73,7 +73,7 @@ app.get('/api/coin/:symbol/:money', async (req, res, next) => {
 app.get('/api/coinname/:coinname', async (req, res, next) => {
   try {
     const { coinname } = req.params;
-    const coin = await Coin.findOne({ name: new RegExp(coinname,'ig') });
+    const coin = await Coin.findOne({ name: new RegExp(coinname.toLowerCase(),'ig') });
     if (coin) {
       res.json({
         rank: coin.market_data.market_cap_rank,
@@ -97,13 +97,13 @@ app.get('/api/coinname/:coinname', async (req, res, next) => {
 app.get('/api/coinname/:coinname/:money', async (req, res, next) => {
   try {
     const { coinname, money } = req.params;
-    const coin = await Coin.findOne({ name: new RegExp(coinname,'ig') });
-    if (coin && coin.market_data.current_price[money]) {
+    const coin = await Coin.findOne({ name: new RegExp(coinname.toLowerCase(),'ig') });
+    if (coin && coin.market_data.current_price[money.toLowerCase()]) {
       res.json({
         rank: coin.market_data.market_cap_rank,
         symbol: coin.symbol,
         name: coin.name,
-        price: coin.market_data.current_price[money],
+        price: coin.market_data.current_price[money.toLowerCase()],
         image: coin.image.large,
         lastupdate: coin.last_updated + 3
       });
@@ -121,8 +121,8 @@ app.get('/api/coinname/:coinname/:money', async (req, res, next) => {
 app.get('/api/coinex/:from/:to', async (req, res, next) => {
   try {
     const { from, to } = req.params;
-    const coin1 = await Coin.findOne({ symbol: from });
-    const coin2 = await Coin.findOne({ symbol: to });
+    const coin1 = await Coin.findOne({ symbol: from.toLowerCase() });
+    const coin2 = await Coin.findOne({ symbol: to.toLowerCase() });
 
     if (coin1 && coin2) {
       res.json({
